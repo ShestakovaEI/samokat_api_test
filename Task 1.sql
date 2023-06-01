@@ -1,5 +1,6 @@
-SELECT "courierId",
+SELECT c.login,
 	COUNT(*)
-FROM "Orders"
-WHERE "inDelivery"=true
-GROUP BY "courierId";
+FROM "Couriers" AS c
+LEFT JOIN "Orders" AS o ON c.id=o."courierId"
+WHERE o."inDelivery"=true
+GROUP BY c.login;
